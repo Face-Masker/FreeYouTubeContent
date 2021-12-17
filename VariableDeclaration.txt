@@ -1,0 +1,106 @@
+RULES FOR NAMING C VARIABLE:
+	Variable name must begin with letter or underscore.
+	Variables are case sensitive
+	They can be constructed with digits, letters.
+	No special symbols are allowed other than underscore.
+	sum, height, _value are some examples for variable name
+
+
+
+THERE ARE THREE TYPES OF VARIABLES IN C PROGRAM THEY ARE,
+	Local variable
+	Global variable
+	Environment variable
+	
+
+1. EXAMPLE PROGRAM FOR LOCAL VARIABLE IN C:
+	#include<stdio.h>
+	void test();
+
+	int main()
+	{
+	   int m = 22, n = 44;
+			// m, n are local variables of main function
+			/*m and n variables are having scope
+			within this main function only.
+			These are not visible to test funtion.*/
+			/* If you try to access a and b in this function,
+			you will get 'a' undeclared and 'b' undeclared error */
+	   printf("\nvalues : m = %d and n = %d", m, n);
+	   test();
+	}
+
+	void test()
+	{
+	   int a = 50, b = 80;
+			// a, b are local variables of test function
+			/*a and b variables are having scope
+			within this test function only.
+			These are not visible to main function.*/
+			/* If you try to access m and n in this function,
+			you will get 'm' undeclared and 'n' undeclared
+			error */
+	   printf("\nvalues : a = %d and b = %d", a, b);
+	}
+	
+	
+EXAMPLE PROGRAM FOR GLOBAL VARIABLE IN C:
+	#include<stdio.h>
+	void test();int m = 22, n = 44;
+	int a = 50, b = 80;
+
+	int main()
+	{
+	   printf("All variables are accessed from main function");
+	   printf("\nvalues: m=%d:n=%d:a=%d:b=%d", m,n,a,b);
+	   test();
+	}
+
+	void test()
+	{
+	   printf("\n\nAll variables are accessed from" \
+	   " test function");
+	   printf("\nvalues: m=%d:n=%d:a=%d:b=%d", m,n,a,b);
+	}
+	
+	
+3. ENVIRONMENT VARIABLES IN C:
+	There are 3 functions which are used to access, modify and assign an environment variable in C. They are,
+	1. setenv()
+	2. getenv()
+	3. putenv()
+	
+	#include <stdio.h>
+	#include <stdlib.h>
+
+	int main()
+	{
+	printf("Directory = %s\n",getenv("DIR"));
+	return 0;
+	}
+	
+	
+
+	#include <stdio.h>
+	#include <stdlib.h>
+	 
+	int main()
+	{
+	setenv("FILE", "/usr/bin/example.c",50);
+	printf("File = %s\n", getenv("FILE"));
+	return 0;
+	}
+	
+	#include <stdio.h>
+	#include <stdlib.h>
+
+	int main()
+	{
+	setenv("DIR", "/usr/bin/example/",50);
+	printf("Directory name before modifying = " \
+	"%s\n", getenv("DIR"));
+	putenv("DIR=/usr/home/");
+	printf("Directory name after modifying = " \
+	"%s\n", getenv("DIR"));
+	return 0;
+	}
